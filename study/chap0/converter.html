@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온도 변환기</title>
+</head>
+<body>
+    <div class="box1">
+        <h1>섭씨 &xhArr; 화씨 온도 변환기</h1>
+    </div>
+    <div class="box2">    
+        <input type="text" id="s-value" onkeyup="converter()">
+        <span id="exchange" onclick="exUnit()"> &xhArr; </span>
+        <input type="text" id="t-value" onkeyup="converter()">
+    </div>
+    <script>
+        var sUnit = document.querySelector("#s-unit");
+        var tUnit = document.querySelector("#t-unit");
+        var cToF = true;
+
+        var source = document.querySelector("#s-value");
+        var target = document.querySelector("#t-value");
+
+        function exUnit() {
+            source.value = "";
+            target.value = "";
+        }
+        function converter () {
+            if(cToF) {
+                target.value = source.value*1.8+32;
+            } else {
+                target.value = (source.value-32)/1.8;
+            }
+        }
+    </script>
+</body>
+</html>

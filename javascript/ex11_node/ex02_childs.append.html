@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소(노드)추가</title>
+    <style>
+        .container, .container2{
+            display: flex;
+            width: 350px;
+            padding: 30px;
+            margin-left: auto; margin-right: auto;
+            border: 1px dotted darkblue;
+        }
+        .container div, .container2 div {
+            border: 1px solid rgb(218, 23, 192);
+            padding: 10px;
+            margin: 3px 5px;
+        }
+        #mybox, #mybox2, #mybox3 {
+            border: 1px solid yellowgreen;
+            width: 150px;
+            margin: 10px auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <select name="" id="">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+        <option value="">4</option>
+        <option value="">5</option>
+    </select>
+    
+    <div id="mybox2">요소추가2</div>
+    <div id="mybox3">요소추가3</div>
+    <div class="container2">
+        container2
+        <div>자식요소1</div>
+        <div id="box2">자식요소2</div>
+    </div>
+    <hr>
+    <div id="mybox">요소추가</div>
+    <div class="container">
+        container
+        <div>자식요소1</div>
+        <div>자식요소2</div>
+    </div>
+
+    <script>
+        const container2 = document.querySelector('.container2')
+        const mybox2 = document.querySelector('#mybox2')
+        const mybox3 = document.querySelector('#mybox3')
+        const box2 = document.querySelector('#box2')
+
+        const container = document.querySelector('.container')
+        const mybox = document.querySelector('#mybox')
+        console.log(container)
+        console.log(mybox)
+
+        setTimeout ( ()=>{
+            // 부모노드.insertBefore
+            // container2.insertBefore(mybox2, container2.firstElementChild)
+            container2.before(container)
+        }, 3000 )
+
+        setTimeout ( ()=>{
+            // container2.insertBefore(mybox3, box2)
+            container2.after(mybox3)
+        } , 6000 )
+
+        setTimeout ( ()=>{ // 특정 자식 요소 삭제(단일요소)
+            container.removeChild(document.querySelector('.container div:ntn-child(1)'))
+        } , 2000 )
+
+        setTimeout ( ()=>{ // 현재 요소 삭제
+            container.remove()
+        } , 7000 )
+
+        setTimeout( ()=>{
+            // 부모노드.appendChild(자식노드)
+            container.appendChild(mybox3)
+        }, 3000 )
+    </script>
+</body>
+</html>

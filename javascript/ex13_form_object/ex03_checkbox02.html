@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체크박스 활용</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<style>
+    .result {
+        border-width: 0;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="check_box">
+            <label>
+                <input type="checkbox" id="chA" class="c" value="border">border
+            </label>
+            <label>
+                <input type="checkbox" id="chB" class="c" value="fontSize" checked>font-size
+            </label>
+            <label>
+                <input type="checkbox" id="chC" class="c" value="color" checked>color
+            </label>
+            <hr>
+            <div class="alert alert-info result">
+                A simple info alert—check it out!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var arrayChk =document.querySelectorAll('.c')
+        const result =document.querySelector('.result')
+
+        console.log("checkbox array =>", arrayChk)
+        console.log("style box result =>"+result)
+
+        // 1.checkBox 초기 상태 확인
+        checkBoxArray()
+
+        // 2. 체크박스 변화가 생겼을때 체크 상태 확인하고 스타일 적용
+        arrayChk.forEach ((chk) => {
+            chk.addEventListener('change',(e)=>{
+                console.log('checkbox change object:',e.target.id, e.target.checked)
+                
+                // 체크 변경 후 체크박스 전체 호출 상태 확인
+                checkBoxArray()
+
+                /*
+                switch(e.target.id){ 
+                    
+                    case "chA" : checkBoxArray(); break;
+                    case "chB" : checkBoxArray(); break;
+                    case "chC" : checkBoxArray(); break;
+                }
+                */
+            })
+        })
+
+        // 배열에 있는 체크박스를 하나씩 읽어오는 함수
+        function checkBoxArray(){
+
+            arrayChk.forEach((chk)=>{
+                console.log(chk.id,chk.value,"체크상태 : "+chk.checked)
+
+                if (chk.id =="chA"){ // 체크 상태에 따라 border 스타일 적용
+                    console.log("border stauts check")
+                    borderFun(chk)
+                }
+                if (chk.id =="chB"){ // 체크 상태에 따라 font-size 스타일 적용
+                    console.log("border stauts check")
+                    fontSizeFun(chk)
+                }
+                if (chk.id =="chC"){ // 체크 상태에 따라 color 스타일 적용
+                    console.log("border stauts check")
+                    colorFun(chk)
+                }
+            })
+        }
+
+        // 체크 박스별로 함수 정의
+        function borderFun(chk){
+            console.log('border style function')
+
+            console.log ("check stauts =>",chk.id,chk.checked)
+            if (chk.checked) // 체크 상태이면 border 스타일 적용
+                result.style.borderWidth = '5px'
+            else // 체크 상태가 아니면 border 스타일 미적용
+                result.style.borderWidth = 0
+        }
+        function fontSizeFun(chk){
+            console.log('fontSize style function')
+
+            console.log ("check stauts =>",chk.id,chk.checked)
+            if (chk.checked) // 체크 상태이면 fontSize 스타일 적용
+                result.style.fontSize = '24px'
+            else // 체크 상태가 아니면 fontSize 스타일 미적용
+                result.style.fontSize = ''
+        }
+        function colorFun(chk){
+            console.log('color style function')
+
+            console.log ("check stauts =>",chk.id,chk.checked)
+            if (chk.checked) // 체크 상태이면 border 스타일 적용
+                result.style.color = 'red'
+            else // 체크 상태가 아니면 border 스타일 미적용
+                result.style.color = ''
+        }
+
+
+    </script>
+</body>
+</html>

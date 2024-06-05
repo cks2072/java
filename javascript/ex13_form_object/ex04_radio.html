@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라디오버튼 객체</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <style>
+    .box1 div {
+      border: 1px solid gainsboro;
+      margin: 20px;padding: 10px;
+    }
+    .box2 {
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box2 p-3">
+      <select class="form-select" id="mySel" >
+        <option value="apple">Apple</option>
+        <option value="orange" >Orange</option>
+        <option value="grape" selected>Grape</option>
+      </select>
+
+      <select class="form-select mt-2" id="mySel2" size="3" multiple >
+      </select>
+
+      <div class="alert alert-warning mt-3 log" >
+        A simple warning alert—check it out!
+      </div>   
+    </div>
+
+  </div>
+  <hr>
+  <form id="radioForm" class="box1">
+    <div class="radio_group1">
+      <label >
+        <input type="radio" name="fruit" value="apple">Apple
+      </label>
+      <label>
+        <input type="radio" name="fruit" value="orange" >Orange
+      </label>
+      <label >
+        <input type="radio" name="fruit" value="grape" checked>grape
+      </label>
+    </div>
+
+    <div class="radio_group2">
+      <label >
+        <input type="radio" name="drink" value="coke" checked>coke
+      </label>
+      <label>
+        <input type="radio" name="drink" value="wine" >wine
+      </label>
+    </div>    
+  </form>
+
+  <script>
+
+
+
+    // mySel2
+    const mySelect2 = document.querySelector('#mySel2')
+    //console.log(mySelect2)
+
+    option_str = ""
+    for (let i=1; i<=31; i++){
+      option_str += `<option value="${i}">${i}</option>`
+      //console.log(option_str)
+    }
+    //console.log(option_str)
+    mySelect2.innerHTML = option_str
+
+    // 1. select 요소 이벤트 처리: 단일 선택일 경우
+    /*
+    mySelect2.addEventListener('change', (e)=>{
+      //console.log(mySelect2.value)
+
+      let value = `선택한 값은 ${mySelect2.value} 입니다.`
+      log.innerHTML = value
+    })
+    */
+    // 2. select 요소 이벤트 처리: 다중 선택일 경우
+    mySelect2.addEventListener('change', (e)=>{
+      // 여러개 선택 항목 체크
+      multiSelected()
+    })  
+
+    function multiSelected(){
+      /*
+      // 1. 확장 for문을 이용:
+      //    mySelect2.options배열 있는 option객체를 읽어와서 체크상태확인
+      let sel_str = ""
+      for (var option of mySelect2.options){  //console.log(option, option.value, option.selected) 
+        if (option.selected) {                //console.log("selected value:"+option.value)
+          sel_str += option.value+","
+        }// end if
+      }// end for
+      log.innerHTML = sel_str
+      */
+
+      // 2. 함수형 형식
+      //onsole.log("유사배열=>"+mySelect2.options)
+      //console.log("[...유사배열]=>배열로 전환:"+[...mySelect2.options])
+
+      var select_value = [...mySelect2.options]
+                        .filter(option => option.selected) // 선택된 option만 반환
+                        .map(option => option.value)
+      console.log(select_value)
+      log.innerHTML = select_value.join(",")
+
+    } 
+
+
+    // ------------ mySel
+    const mySelect = document.querySelector('#mySel')
+    const log = document.querySelector('.log')
+    console.log("select object=>", mySelect)
+
+    //console.log("선택한 값: "+mySelect.value)
+    var value = `선택한 값은 ${mySelect.value} 입니다.`
+    log.innerHTML = value
+
+
+    // select 요소 이벤트 처리
+    mySelect.addEventListener('change', (e)=>{
+      console.log(mySelect.value)
+    })
+
+
+    // ------------------ //
+    const radioGroup1 = document.querySelector('form#radioForm')
+
+    console.log("form태그를 이용하여 radio객체 선택값 확인")
+    console.log(radioGroup1.fruit.value)
+    console.log(radioGroup1.drink.value)
+
+    /*
+    const g1 = document.getElementsByName("fruit")
+    console.log(g1)
+    g1.forEach((ra)=>{
+      //onsole.log(ra.name,ra.value, ra.checked)
+      if (ra.checked) console.log(ra.value)
+    })
+    */
+    
+
+    // 이벤트 등록하기 : change -> form
+    radioGroup1.addEventListener('change', handleChange)
+    function handleChange(e){
+      console.log("event object => ", e)
+
+      console.log(radioGroup1.fruit.value)
+      console.log(radioGroup1.drink.value)
+    }
+
+  </script>
+</body>
+</html>
