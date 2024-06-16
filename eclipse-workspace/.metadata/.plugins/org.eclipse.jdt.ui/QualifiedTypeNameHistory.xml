@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="chap19.rentCar.controller.RentCarController"/>
+    <fullyQualifiedTypeName name="chap19.rentCar.dao.RentCarDAO"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="chap19.rentCar.controller.RentCarcontrollerImpl"/>
+    <fullyQualifiedTypeName name="chap19.rentCar.dao.RentCarDAOImpl"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="chap19.rentCar.vo.RentCarVO"/>
+</qualifiedTypeNameHistroy>
