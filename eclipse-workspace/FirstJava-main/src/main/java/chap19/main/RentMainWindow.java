@@ -20,6 +20,16 @@ import chap19.member.controller.MemberControllerImpl;
 import chap19.member.window.ModifyMemDialog;
 import chap19.member.window.RegMemDialog;
 import chap19.member.window.SearchMemDialog;
+import chap19.rentCar.controller.RentCarController;
+import chap19.rentCar.controller.RentCarcontrollerImpl;
+import chap19.rentCar.window.ModifyRenDialog;
+import chap19.rentCar.window.RegRenDialog;
+import chap19.rentCar.window.SearchRenDialog;
+import chap19.res.controller.ResController;
+import chap19.res.controller.ResControllerImpl;
+import chap19.res.window.ModifyResDialog;
+import chap19.res.window.RegResDialog;
+import chap19.res.window.SearchResDialog;
 
 public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가진 추상클래스 상속받기
 	
@@ -45,7 +55,9 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 	// MemberController
 	MemberController memberController;
 	// CarController
+	RentCarController rentcarController;
 	// ResController
+	ResController resController;
 
 	
 	// 생성자
@@ -59,6 +71,8 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 		helpMenu = new JMenu("도움말");
 		
 		memberController = new MemberControllerImpl();
+		rentcarController = new RentCarcontrollerImpl();
+		resController = new ResControllerImpl();
 	}
 	
 	// 서브메뉴 생성 메서드
@@ -123,11 +137,17 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 		memMenu21.addActionListener(new MemberHandler());
 		memMenu22.addActionListener(new MemberHandler());
 		memMenu23.addActionListener(new MemberHandler());
-//		memMenu24.addActionListener(new MemberHandler());
+		memMenu24.addActionListener(new MemberHandler());
 		
-//		carMenu11.addActionListener(new CarHandler());
-		
-//		resMenu31.addActionListener(new ResHandler());
+		carMenu11.addActionListener(new CarHandler());
+		carMenu12.addActionListener(new CarHandler());
+		carMenu13.addActionListener(new CarHandler());
+		carMenu14.addActionListener(new CarHandler());
+	
+		resMenu31.addActionListener(new ResHandler());
+		resMenu32.addActionListener(new ResHandler());
+		resMenu33.addActionListener(new ResHandler());
+		resMenu34.addActionListener(new ResHandler());
 		
 //		helpMenu.addActionListener(new HelpHandler());
 			
@@ -168,8 +188,56 @@ public class RentMainWindow extends AbstractBaseWindow { // JFram기능을 가�
 		}
 		
 	}
+	
 	// 차량관리
+	class CarHandler implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				System.out.println(e.getActionCommand());
+				
+				if (e.getSource() == carMenu11) {
+					new RegRenDialog(rentcarController, "렌트카 등록창");
+				} else if (e.getSource() == carMenu11) {
+					new SearchRenDialog(rentcarController, "렌트카 조회창");
+				} else if (e.getSource() == carMenu12) {
+					new ModifyRenDialog(rentcarController, "렌트카 수정창");
+				}else if (e.getSource() == carMenu13) {
+					
+				}
+			} catch (Exception e2) {System.out.println(e2.getMessage());}
+			
+		}
+		
+	}
+	
 	// 예약관리
+	class ResHandler implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				System.out.println(e.getActionCommand());
+				
+				if (e.getSource() == carMenu11) {
+					new RegResDialog(resController, "예약 등록창");
+				} else if (e.getSource() == memMenu22) {
+					new SearchResDialog(resController, "에약 조회창");
+				} else if (e.getSource() == memMenu23) {
+					new ModifyResDialog(resController, "예약 수정창");
+				}else if (e.getSource() == memMenu24) {
+					
+				}
+				
+			} catch (Exception e2) {System.out.println(e2.getMessage());}
+		
+		}
+		
+	}
+	
 	// 도움말
 
 }

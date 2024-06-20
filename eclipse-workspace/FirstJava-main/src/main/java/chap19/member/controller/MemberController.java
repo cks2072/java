@@ -14,6 +14,6 @@ public interface MemberController {
 	// 회원 삭제
 	public int removeMember(MemberVO memberVO);
 	// 회원 ID로 정보 ㅈ회
-	public MemberVO checkId(String memId);
+	public MemberVO checkId(String string);
 
 }
