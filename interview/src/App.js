@@ -1,8 +1,9 @@
-// src/App.js
-import React from 'react';
-import About from './components/About';
-import Explore from './components/Explore';
 import './App.css';
+import React from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+
+import About from './component/About';
+import Explore from './component/Explore';
 
 function App() {
   return (
@@ -10,16 +11,14 @@ function App() {
       <header className="App-header">
         <h1>Life Relay</h1>
         <nav>
-          <a href="#about">About</a> | <a href="#explore">Explore</a>
+          <Link to="/about">About</Link> | <Link to="/explore">Explore</Link>
         </nav>
       </header>
       <main>
-        <section id="about">
-          <About />
-        </section>
-        <section id="explore">
-          <Explore />
-        </section>
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/explore" element={<Explore />} />
+        </Routes>
       </main>
     </div>
   );

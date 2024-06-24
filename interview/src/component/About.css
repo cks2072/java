@@ -1,0 +1,6 @@
+.Link {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
