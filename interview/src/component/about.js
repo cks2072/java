@@ -7,22 +7,23 @@ function  About() {
     <div className="About">
       <header className="header">
         <div className="logo">Life Relay</div>
-        <nav className='Link'>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/stories">Stories</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-        </nav>
+
+        {/* <nav className='Link'>
+            <li><Link to="/Home" style={{ textDecoration: "none"}}>Home</Link></li>
+            <li><Link to="/stories" style={{ textDecoration: "none"}}>Stories</Link></li>
+            <li><Link to="/contact" style={{ textDecoration: "none"}}>Contact</Link></li>
+        </nav> */}
       </header>
 
-      <main className="main-content">
-        <section id="what-is">
+      <div className="main-content">
+        <section className="content">
           <h1>What is Life Relay?</h1>
-          <p>사이트에 오신것을 환영합니다.</p>
+          <p>#</p>
         </section>
-      </main>
+      </div>
 
       <footer className="footer">
-        <p>© 2024 CHAN. All rights reserved.</p>
+        <p>© 2024 chan. All rights reserved.</p>
       </footer>
     </div>
   );

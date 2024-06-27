@@ -1,6 +1,15 @@
+
 .Link {
     list-style-type: none;
     display: flex;
     gap: 20px;
     justify-content: center;
+}
+
+.main-content {
+    height: 500px;
+}
+
+.content {
+    margin-top: 230px;
 }

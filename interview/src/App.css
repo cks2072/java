@@ -4,9 +4,33 @@
 }
 
 .App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #282c34;
-  padding: 20px;
+  padding: 10px 20px;
   color: white;
+}
+
+.left-nav {
+  display: flex;
+  align-items: center;
+  flex: 1; 
+}
+
+.right-links {
+  display: flex;
+  align-items: center;
+}
+
+.right-links a {
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.right-links a:hover {
+  text-decoration: underline;
 }
 
 .App-header nav a {
@@ -15,10 +39,18 @@
   text-decoration: none;
 }
 
-.App-header nav a:hover {
-  text-decoration: underline;
-}
-
 main {
   padding: 20px;
+}
+
+.login_box {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.App-header div a {
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
 }

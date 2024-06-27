@@ -1,4 +1,4 @@
-.Home {
+  .Home {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -35,18 +35,24 @@
   }
   
   #intro {
-    background-color: #f9f9f9;
+    background-color: #a7a6a6;
     padding: 1rem;
     margin-bottom: 1rem;
+  }
+
+  #what {
+    background-color: #f9f9f9;
+    padding: 1rem;
   }
   
   #stories {
     background-color: #fff;
     padding: 1rem;
+    border: 1px grey;
   }
-  
-  #stories article {
-    margin-bottom: 1rem;
+
+  #stories div {
+    margin-bottom: 7rem;
   }
   
   .footer {
